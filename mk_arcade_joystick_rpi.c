@@ -90,27 +90,12 @@ struct mk_pad {
     int mcp23017addr;
 };
 
-struct mk_nin_gpio {
-    unsigned pad_id;
-    unsigned cmd_setinputs;
-    unsigned cmd_setoutputs;
-    unsigned valid_bits;
-    unsigned request;
-    unsigned request_len;
-    unsigned response_len;
-    unsigned response_bufsize;
-};
-
 struct mk {
     struct mk_pad pads[MK_MAX_DEVICES];
     struct timer_list timer;
     int pad_count[MK_MAX];
     int used;
     struct mutex mutex;
-};
-
-struct mk_subdev {
-    unsigned int idx;
 };
 
 static struct mk *mk_base;
@@ -271,9 +256,10 @@ static int __init mk_setup_pad(struct mk *mk, int idx, int pad_type_arg) {
             for (i = 0; i < mk_max_arcade_buttons; i++) {
                 setGpioAsInput(mk_arcade_gpio_maps[i]);
             }
-            setGpioPullUps(0x2df72060);
+            setGpioPullUps(0x2df72060); // really, this should be generated on the fly
             printk("GPIO configured for pad%d\n", idx);
             break;
+    }
 
     err = input_register_device(pad->dev);
     if (err)
