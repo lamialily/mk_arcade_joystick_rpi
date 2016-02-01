@@ -102,11 +102,11 @@ static struct mk *mk_base;
 
 static const int mk_max_arcade_buttons = 14;
 
-// Map of the gpios :                     u,  d,  l,  r,  str, sct, a, b, tr, y,  x,  tl, br, bl
-static const int mk_arcade_gpio_maps[] = {26, 20, 16, 21, 22,  27,  5, 6, 23, 29, 13, 18, 24, 17};
+// Map of the gpios :                     u,  d,  l,  r,  str, sct, a, b, tr, y,  x,  tl, tr2, tl2
+static const int mk_arcade_gpio_maps[] = {26, 20, 16, 21, 22,  27,  5, 6, 23, 19, 13, 18, 24,  17};
 
 static const short mk_arcade_gpio_btn[] = {
-    BTN_START, BTN_SELECT, BTN_A, BTN_B, BTN_TR, BTN_Y, BTN_X, BTN_TL, BTN_BR, BTN_BL
+    BTN_START, BTN_SELECT, BTN_A, BTN_B, BTN_TR, BTN_Y, BTN_X, BTN_TL, BTN_TR2, BTN_TL2
 };
 
 static const char *mk_names[] = {
